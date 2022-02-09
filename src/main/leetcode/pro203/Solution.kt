@@ -17,11 +17,15 @@ class Solution {
             return null
         }
 
-        if(head.`val` == `val`) {
+        if (head.`val` == `val`) {
             return removeElements(head.next, `val`)
         }
 
         head.next = removeElements(head.next, `val`)
         return head
     }
+}
+
+class ListNode(var `val`: Int) {
+    var next: ListNode? = null
 }

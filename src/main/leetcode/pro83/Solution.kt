@@ -31,3 +31,7 @@ class Solution {
         return head
     }
 }
+
+class ListNode(var `val`: Int) {
+    var next: ListNode? = null
+}
