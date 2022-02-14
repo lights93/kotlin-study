@@ -13,6 +13,8 @@ import java.util.*
  *     var right: TreeNode? = null
  * }
  */
+
+// https://leetcode.com/problems/path-sum/
 class Solution {
     fun hasPathSum(root: TreeNode?, targetSum: Int): Boolean {
         if (root == null) {

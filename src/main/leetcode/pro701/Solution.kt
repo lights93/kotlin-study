@@ -1,4 +1,4 @@
-package pro226
+package pro701
 
 /**
  * Example:
@@ -11,16 +11,18 @@ package pro226
  * }
  */
 
-// https://leetcode.com/problems/invert-binary-tree/
+// https://leetcode.com/problems/insert-into-a-binary-search-tree/
 class Solution {
-    fun invertTree(root: TreeNode?): TreeNode? {
+    fun insertIntoBST(root: TreeNode?, `val`: Int): TreeNode? {
         if (root == null) {
-            return null
+            return TreeNode(`val`)
         }
 
-        val temp = root.left
-        root.left = invertTree(root.right)
-        root.right = invertTree(temp)
+        if (root.`val` < `val`) {
+            root.right = insertIntoBST(root.right, `val`)
+        } else {
+            root.left = insertIntoBST(root.left, `val`)
+        }
 
         return root
     }
