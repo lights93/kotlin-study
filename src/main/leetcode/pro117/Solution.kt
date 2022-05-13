@@ -13,40 +13,41 @@ import java.util.*
 
 // https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 class Solution {
+
     fun connect(root: Node?): Node? {
-        if (root == null) {
+        if(root == null) {
             return null
         }
-        val queue: Queue<Node> = LinkedList()
-        queue.add(root)
 
-        while (queue.isNotEmpty()) {
-            val size = queue.size
-            var before = queue.poll()
-            if (before.left != null) {
-                queue.add(before.left)
-            }
+        var current = root
+        var head :Node? = null
+        var prev :Node? = null
 
-            if (before.right != null) {
-                queue.add(before.right)
-            }
-            for (i in 1 until size) {
-                val node = queue.poll()
-                before.next = node
-                before = node
-
-                if (node.left != null) {
-                    queue.add(node.left)
+        while (current != null) {
+            if(current.left != null) {
+                if(prev == null) {
+                    head = current.left
+                } else {
+                    prev.next = current.left
                 }
-
-                if (node.right != null) {
-                    queue.add(node.right)
-                }
+                prev = current.left
             }
+
+            if(current.right != null) {
+                if(prev == null) {
+                    head = current.right
+                } else {
+                    prev.next = current.right
+                }
+                prev = current.right
+            }
+
+            current = current.next
         }
 
-        return root
+        connect(head)
 
+        return root
     }
 }
 
